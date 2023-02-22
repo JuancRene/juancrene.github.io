@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="estilo.css">
+    <title>JR Desarrollo Web</title>
+</head>
+
+<body>
+    <!-- SECCION I N I C I O -->
+    <section id="inicio">
+        <div class="contenido">
+            <header>
+                <div class="contenido-header">
+                    <h1>&ltJR&gt</h1>
+                    <nav id="nav" class="">
+                        <ul id="links">
+                            <li><a href="#inicio" class="seleccionado" onclick="seleccionar(this)">INICIO</a></li>
+                            <li><a href="#sobremi" onclick="seleccionar(this)">SOBRE MI</a></li>
+                            <li><a href="#servicios" onclick="seleccionar(this)">SERVICIOS</a></li>
+                            <li><a href="#skills" onclick="seleccionar(this)">CONOCIMIENTOS</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Icono del menu responsive -->
+                    <div id="icono-nav" onclick="responsiveMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+
+                    <div class="redes">
+                        <a target="_blank" href=https://api.whatsapp.com/send/?phone=543436238873><i class="fa-brands fa-whatsapp"></i></a>
+                        
+                        <a href="https://www.linkedin.com/in/juan-cruz-rene-arenas-a1a690230/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>   
+                    </div>
+                </div>
+            </header>
+            <div class="presentacion">
+                <p class="bienvenida">Bienvenido!</p>
+                <h2>Soy <span>Juan Rene</span>, Desarrollador Web</h2>
+                <p class="descripcion"> </p>
+                <a href="#servicios">Ve mis servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION S O B R E M I -->
+    <section id="sobremi">
+        <div class="contenedor-foto">
+            <img src=perfil.jpg >
+            
+        </div>
+        <div class="sobremi">
+            <p class="titulo-seccion">Sobre Mi</p>
+            <h2>Hola, Soy <span>Juan Cruz Rene</span> </h2>
+            <h3>Desarrollador Web</h3>
+            <p>Hola! Soy Juan, acutalmente resido en la ciudad de Parana,Entre Rios, Argentina. Curso el segundo año de la tecnicatura en programacion en UTN.</p>
+            <p>Tengo conocimientos en HTML, CSS, JavaScript, Python, NodeJS, bases de datos y análisis de datos, tambien estoy aprendiendo Java yC#.</p>
+            <p>Estoy en busca de nuevas experiencias y oportunidades  para aplicar mis habilidades e impulsar mi carrera como desarrollador web.</p>
+        
+        
+    </section>
+
+    <!-- SECCION S E R V I C I O S -->
+    <section id="servicios">
+        <h3 class="titulo-seccion">MIS SERVICIOS</h3>
+        <div class="fila">
+            <div class="servicio">
+                <span class="icono"> <i class="fa-solid fa-code"></i></span>
+                <h4>Desarrollo de Sitios Web</h4>
+            </div>
+            <div class="servicio">
+                <span class="icono"> <i class="fa-solid fa-code"></i></span>
+                <h4>Python</h4>
+            </div>
+        </div>
+
+        <div class="fila">
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-database"></i></span>
+                <h4>Bases de Datos</h4>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                <h4>Data Analytics</h4>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-code"></i></span>
+                <h4>Frameworks y APIs</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION H A B I L I D A D E S -->
+    <div class="contenedor-skills" id="skills">
+        <h3>CONOCIMIENTOS </h3>
+
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Full Stack Developer</p>
+                <span class="porcentaje">100%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="html"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Bases de Datos</p>
+                <span class="porcentaje">90%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="js"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Python Developer</p>
+                <span class="porcentaje">90%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="bd"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Data Analytics</p>
+                <span class="porcentaje">80%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="ps"></div>
+            </div>
+        </div>
+
+
+        <div class="skill">
+            <div class="info">
+                <p> <span class="lista"> </span>Frameworks y APIs</p>
+                <span class="porcentaje">75%</span>
+            </div>
+
+            <div class="barra">
+                <div class="" id="fa"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- SECCION FOOTER -->
+    <footer id="contactame">
+        <p>Contactame!</p>
+        <div class="redes">
+            <a href=https://api.whatsapp.com/send/?phone=543436238873 target="_blank"><i class="fa-brands fa-whatsapp"></i></a>   
+            <a href="https://www.linkedin.com/in/juan-cruz-rene-arenas-a1a690230/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>         
+        </div>
+        <h1>&ltJR&gt</h1>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
