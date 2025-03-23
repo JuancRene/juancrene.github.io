@@ -7,7 +7,7 @@ export default function WebGLBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!containerRef.current) return
+    if (typeof window === "undefined" || !containerRef.current) return
 
     // Scene setup
     const scene = new THREE.Scene()
@@ -127,9 +127,14 @@ export default function WebGLBackground() {
     return () => {
       window.removeEventListener("resize", handleResize)
       window.removeEventListener("mousemove", handleMouseMove)
-      if (containerRef.current) {
+      if (containerRef.current && renderer.domElement) {
         containerRef.current.removeChild(renderer.domElement)
       }
+
+      // Dispose resources
+      particlesGeometry.dispose()
+      particlesMaterial.dispose()
+      renderer.dispose()
     }
   }, [])
 

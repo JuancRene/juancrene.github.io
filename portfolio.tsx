@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Github, Linkedin, Menu, X, Mail } from "lucide-react"
+import SimpleBackground from "@/components/simple-background"
 
 // Import sections
 import HeroSection from "@/components/hero-section"
@@ -12,13 +12,6 @@ import ServicesSection from "@/components/services-section"
 import SkillsSection from "@/components/skills-section"
 import ExperienceSection from "@/components/experience-section"
 import ContactSection from "@/components/contact-section"
-
-// Import the animated background
-//import WebGLBackground from "@/components/webgl-background"
-// Uncomment one of these alternatives if you prefer a different style:
-import AnimatedBackground from "@/components/animated-background"
-// import GradientBackground from "@/components/gradient-background"
-// import DigitalRainBackground from "@/components/digital-rain-background"
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("inicio")
@@ -47,14 +40,22 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen)
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: "smooth",
+      })
+      setActiveSection(sectionId)
+      setMobileMenuOpen(false)
+    }
   }
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Add the animated background */}
-      <WebGLBackground />
+      {/* Fondo animado */}
+      <SimpleBackground />
 
       {/* Header */}
       <header
@@ -63,57 +64,65 @@ export default function Portfolio() {
         }`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link
-            href="#inicio"
+          <button
+            onClick={() => scrollToSection("inicio")}
             className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"
           >
             &lt;JR&gt;
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {["inicio", "sobre-mi", "servicios", "experiencia", "conocimientos", "contacto"].map((item) => (
-              <Link
-                key={item}
-                href={`#${item}`}
+            {[
+              { id: "inicio", label: "inicio" },
+              { id: "sobre-mi", label: "sobre mi" },
+              { id: "servicios", label: "servicios" },
+              { id: "experiencia", label: "experiencia" },
+              { id: "conocimientos", label: "conocimientos" },
+              { id: "contacto", label: "contacto" },
+            ].map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 className={`text-sm uppercase tracking-wider hover:text-emerald-400 transition-colors ${
-                  activeSection === item ? "text-emerald-400 font-medium" : "text-gray-300"
+                  activeSection === item.id ? "text-emerald-400 font-medium" : "text-gray-300"
                 }`}
               >
-                {item.replace("-", " ")}
-              </Link>
+                {item.label}
+              </button>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-white" onClick={toggleMobileMenu}>
+          <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-black/95 backdrop-blur-md absolute top-full left-0 right-0 border-t border-gray-800"
-          >
+          <div className="md:hidden bg-black/95 backdrop-blur-md absolute top-full left-0 right-0 border-t border-gray-800">
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              {["inicio", "sobre-mi", "servicios", "experiencia", "conocimientos", "contacto"].map((item) => (
-                <Link
-                  key={item}
-                  href={`#${item}`}
-                  className={`text-sm uppercase tracking-wider py-2 ${
-                    activeSection === item ? "text-emerald-400 font-medium" : "text-gray-300"
+              {[
+                { id: "inicio", label: "inicio" },
+                { id: "sobre-mi", label: "sobre mi" },
+                { id: "servicios", label: "servicios" },
+                { id: "experiencia", label: "experiencia" },
+                { id: "conocimientos", label: "conocimientos" },
+                { id: "contacto", label: "contacto" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm uppercase tracking-wider py-2 text-left ${
+                    activeSection === item.id ? "text-emerald-400 font-medium" : "text-gray-300"
                   }`}
-                  onClick={() => setMobileMenuOpen(false)}
                 >
-                  {item.replace("-", " ")}
-                </Link>
+                  {item.label}
+                </button>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </header>
 
@@ -126,15 +135,15 @@ export default function Portfolio() {
       <ContactSection />
 
       {/* Footer */}
-      <footer className="py-8 border-t border-gray-800 bg-black/80 backdrop-blur-md">
+      <footer className="py-8 border-t border-gray-800 bg-black">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <Link
-              href="#inicio"
+            <button
+              onClick={() => scrollToSection("inicio")}
               className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-4 md:mb-0"
             >
               &lt;JR&gt;
-            </Link>
+            </button>
 
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} Juan Cruz Rene. Todos los derechos reservados.
