@@ -1,3 +1,6 @@
+// Make sure the output is set to 'export' for static deployments
+// Add basePath if you're deploying to a subdirectory
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -10,6 +13,7 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true, // Add this for static exports
   },
   transpilePackages: [
     'lucide-react',
@@ -50,7 +54,8 @@ const nextConfig = {
     '@radix-ui/react-toggle-group',
     '@radix-ui/react-tooltip',
     '@tanstack/react-table'
-  ]
+  ],
+  output: 'export', // Add this for static site generation
 }
 
 export default nextConfig

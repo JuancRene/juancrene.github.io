@@ -64,7 +64,13 @@ export default function AboutSection() {
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 blur-xl opacity-20"></div>
               <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-50"></div>
               <div className="relative h-full w-full overflow-hidden rounded-2xl border border-emerald-500/20">
-                <Image src="/images/juan-profile.png" alt="Juan Cruz Rene Arenas" fill className="object-cover" />
+                <Image
+                  src="/images/juan-profile.png"
+                  alt="Juan Cruz Rene Arenas"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </motion.div>

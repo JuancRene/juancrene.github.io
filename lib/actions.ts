@@ -35,8 +35,9 @@ export async function sendContactForm(formData: FormData) {
       }
     }
 
+    // Para despliegues estáticos, podemos simular el envío
     // En un entorno real, aquí enviarías el email usando un servicio como Nodemailer, SendGrid, etc.
-    // Por ahora, simulamos un envío exitoso
+    console.log("Form submission:", { name, email, subject, message })
 
     // Simulamos un pequeño retraso para mostrar el estado de carga
     await new Promise((resolve) => setTimeout(resolve, 1000))

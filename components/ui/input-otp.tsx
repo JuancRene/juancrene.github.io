@@ -16,7 +16,7 @@ const OTPInputContext = React.createContext<{
   maxLength: 6,
 })
 
-// Componente principalq
+// Componente principal
 export function OTPInput({
   value,
   onChange,
