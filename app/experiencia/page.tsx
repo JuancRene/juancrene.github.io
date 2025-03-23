@@ -1,7 +1,7 @@
 import type React from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import { Calendar, Code, Users, Bot, ChevronRight, Database, Github, ExternalLink } from "lucide-react"
+import { Calendar, Users, Bot, Database, Github, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -79,115 +79,14 @@ export default function ExperiencePage() {
                 ]}
                 link="https://github.com/JuancRene/Botsito"
               />
-
-              <ExperienceCard
-                title="Portfolio Web Personal"
-                period="2023"
-                role="Desarrollador Web Jr"
-                icon={<Code size={24} />}
-                description="Diseño y desarrollo de plataforma personal de presentación profesional:"
-                tasks={[
-                  "Conceptualización y diseño UX/UI centrado en la experiencia de usuario y accesibilidad",
-                  "Implementación frontend con enfoque mobile-first y técnicas avanzadas de CSS",
-                  "Optimización de rendimiento web siguiendo las mejores prácticas de Core Web Vitals",
-                  "Integración de animaciones y transiciones fluidas para mejorar el engagement",
-                  "Despliegue y configuración en GitHub Pages con integración continua",
-                ]}
-                link="https://github.com/JuancRene"
-              />
             </div>
 
-            <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-800">
-              <h2 className="text-2xl font-bold mb-6">Habilidades Adquiridas</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <h3 className="text-lg font-semibold mb-4">Desarrollo Web</h3>
-                  <ul className="space-y-2 text-gray-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>
-                        Arquitectura de interfaces modernas con React y Next.js implementando Server Components y Client
-                        Components
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Optimización avanzada de rendimiento, SEO y Core Web Vitals</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Integración de sistemas de autenticación y autorización con proveedores OAuth</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <h3 className="text-lg font-semibold mb-4">Desarrollo Backend</h3>
-                  <ul className="space-y-2 text-gray-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Diseño e implementación de APIs RESTful siguiendo principios SOLID</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Modelado de bases de datos relacionales con optimización de consultas y rendimiento</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Implementación de sistemas de caché, middleware de seguridad y validación de datos</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <h3 className="text-lg font-semibold mb-4">Enseñanza</h3>
-                  <ul className="space-y-2 text-gray-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Preparación de material didáctico</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Adaptación de contenido según nivel y edad</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Evaluación de progreso y retroalimentación</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <h3 className="text-lg font-semibold mb-4">Desarrollo de Software</h3>
-                  <ul className="space-y-2 text-gray-300">
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>Aplicación de patrones de diseño y arquitecturas limpias en proyectos complejos</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>
-                        Gestión de versiones con Git, implementación de flujos de trabajo colaborativos y CI/CD
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-emerald-400 mt-1">•</span>
-                      <span>
-                        Desarrollo ágil con metodologías Scrum y Kanban, estimación de tareas y gestión de sprints
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-8 flex justify-center">
-                <Link href="/proyectos">
-                  <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600">
-                    Ver mis proyectos <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
+            <div className="text-center mt-8">
+              <Link href="/">
+                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600">
+                  Volver al inicio
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

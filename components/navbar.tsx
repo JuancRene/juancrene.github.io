@@ -23,6 +23,7 @@ export default function Navbar() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
+  // Update the navItems array to include both page links and hash links
   const navItems = [
     { name: "Inicio", path: "/" },
     { name: "Sobre Mí", path: "/sobre-mi" },
@@ -31,9 +32,10 @@ export default function Navbar() {
     { name: "Contacto", path: "/contacto" },
   ]
 
+  // Update the isActive function to handle both page and hash links
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true
-    if (path !== "/" && pathname.startsWith(path)) return true
+    if (path !== "/" && pathname?.startsWith(path)) return true
     return false
   }
 

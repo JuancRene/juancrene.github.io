@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   title: "Juan Cruz Rene Arenas | Desarrollador de Software",
   description:
     "Portfolio profesional de Juan Cruz Rene Arenas, desarrollador de software especializado en C#, HTML, CSS, Java y SQL.",
-  metadataBase: new URL("https://your-deployment-url.com"), // Update with your actual deployment URL
     generator: 'v0.dev'
 }
 

@@ -1,22 +1,29 @@
-// Make sure the output is set to 'export' for static deployments
-// Add basePath if you're deploying to a subdirectory
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  
+  // Static export configuration
+  output: 'export',
+  
+  // Image configuration for static exports
   images: {
-    domains: ['placeholder.com'],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
     ],
-    unoptimized: true, // Add this for static exports
   },
+  
+  // Ensure trailing slashes for better compatibility with static hosting
+  trailingSlash: true,
+  
+  // Transpile packages that might cause issues
   transpilePackages: [
     'lucide-react',
+    'framer-motion',
     'recharts',
     'embla-carousel-react',
     'react-day-picker',
@@ -26,6 +33,7 @@ const nextConfig = {
     'vaul',
     'cmdk',
     'react-resizable-panels',
+    'three',
     '@radix-ui/react-accordion',
     '@radix-ui/react-alert-dialog',
     '@radix-ui/react-aspect-ratio',
@@ -54,8 +62,7 @@ const nextConfig = {
     '@radix-ui/react-toggle-group',
     '@radix-ui/react-tooltip',
     '@tanstack/react-table'
-  ],
-  output: 'export', // Add this for static site generation
+  ]
 }
 
 export default nextConfig

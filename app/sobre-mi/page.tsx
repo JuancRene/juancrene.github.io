@@ -3,10 +3,10 @@
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { ChevronRight, GraduationCap, Code, Languages } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import OptimizedImage from "@/components/optimized-image"
 
 export default function AboutPage() {
   return (
@@ -70,7 +70,13 @@ export default function AboutPage() {
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 blur-xl opacity-20"></div>
                   <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-50"></div>
                   <div className="relative h-full w-full overflow-hidden rounded-2xl border border-emerald-500/20">
-                    <Image src="/images/juan-profile.png" alt="Juan Cruz Rene Arenas" fill className="object-cover" />
+                    <OptimizedImage
+                      src="/images/juan-profile.png"
+                      alt="Juan Cruz Rene Arenas"
+                      fill
+                      className="object-cover"
+                      fallbackSrc="/placeholder.svg?height=400&width=400"
+                    />
                   </div>
                 </div>
               </div>
@@ -173,49 +179,6 @@ export default function AboutPage() {
                       Ver mi experiencia <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800">
-              <h2 className="text-2xl font-bold mb-6">Mi Trayectoria</h2>
-
-              <div className="space-y-8">
-                <div className="relative pl-8 border-l-2 border-emerald-500/50">
-                  <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-emerald-500"></div>
-                  <h3 className="text-xl font-semibold mb-2">Primeros pasos en la programación</h3>
-                  <p className="text-gray-300">
-                    Todo empezó con HTML y CSS. Recuerdo la emoción de crear mi primera página web y verla funcionar en
-                    el navegador. Desde ese momento, supe que quería seguir este camino.
-                  </p>
-                </div>
-
-                <div className="relative pl-8 border-l-2 border-emerald-500/50">
-                  <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-emerald-500"></div>
-                  <h3 className="text-xl font-semibold mb-2">Estudios en la UTN</h3>
-                  <p className="text-gray-300">
-                    Entrar a la universidad fue un punto de inflexión. Pasar de aprender por mi cuenta a tener una
-                    estructura y mentores que me guiaran hizo que mi progreso se acelerara enormemente.
-                  </p>
-                </div>
-
-                <div className="relative pl-8 border-l-2 border-emerald-500/50">
-                  <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-emerald-500"></div>
-                  <h3 className="text-xl font-semibold mb-2">Mis primeros proyectos reales</h3>
-                  <p className="text-gray-300">
-                    Desarrollar mi portfolio y el bot para WhatsApp fueron mis primeros proyectos "serios". Enfrentarme
-                    a problemas reales y superarlos me dio la confianza para asumir retos más grandes.
-                  </p>
-                </div>
-
-                <div className="relative pl-8">
-                  <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-emerald-500"></div>
-                  <h3 className="text-xl font-semibold mb-2">Compartiendo conocimiento</h3>
-                  <p className="text-gray-300">
-                    Enseñar en Coding Giants ha sido una experiencia increíble. No solo me permite ayudar a otros a
-                    iniciar su camino en la programación, sino que también me obliga a entender los conceptos a un nivel
-                    más profundo para poder explicarlos.
-                  </p>
                 </div>
               </div>
             </div>

@@ -1,57 +1,14 @@
-"use client"
-
 import type React from "react"
-
-import { useState } from "react"
-import Navbar from "../../components/navbar"
-import Footer from "../../components/footer"
-import { Github, Linkedin, MessageSquare, Mail, MapPin, Phone, Loader2 } from "lucide-react"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
+import { Github, Linkedin, MessageSquare, Mail, MapPin, Phone } from "lucide-react"
 import Link from "next/link"
-import { Button } from "../../components/ui/button"
-import { sendContactForm } from "../../lib/actions"
-import { useToast } from "../../hooks/use-toast"
+import { Button } from "@/components/ui/button"
+
+// Import the ContactForm component
+import ContactForm from "@/components/contact-form"
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formErrors, setFormErrors] = useState<Record<string, string[]>>({})
-  const { showToast } = useToast()
-
-  async function handleSubmit(formData: FormData) {
-    setIsSubmitting(true)
-    setFormErrors({})
-
-    try {
-      const result = await sendContactForm(formData)
-
-      if (result.success) {
-        showToast({
-          title: "Mensaje enviado",
-          description: result.message,
-          variant: "default",
-        })
-        // Limpiar el formulario
-        const form = document.getElementById("contact-form") as HTMLFormElement
-        form?.reset()
-      } else {
-        setFormErrors(result.errors || {})
-        showToast({
-          title: "Error",
-          description:
-            result.message || "Hubo un error al enviar el mensaje. Por favor, revisa los campos e intenta nuevamente.",
-          variant: "destructive",
-        })
-      }
-    } catch (error) {
-      showToast({
-        title: "Error",
-        description: "Hubo un problema al procesar tu solicitud. Por favor, intenta nuevamente.",
-        variant: "destructive",
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
@@ -82,88 +39,10 @@ export default function ContactPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              {/* Replace the form in the first column with our ContactForm component */}
               <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-800">
                 <h2 className="text-2xl font-bold mb-6">Envíame un mensaje</h2>
-
-                <form id="contact-form" action={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm text-gray-400">
-                      Nombre
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                        formErrors.name ? "border-red-500" : "border-gray-700"
-                      } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                      placeholder="Tu nombre"
-                    />
-                    {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name[0]}</p>}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm text-gray-400">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                        formErrors.email ? "border-red-500" : "border-gray-700"
-                      } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                      placeholder="Tu email"
-                    />
-                    {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email[0]}</p>}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm text-gray-400">
-                      Asunto
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                        formErrors.subject ? "border-red-500" : "border-gray-700"
-                      } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                      placeholder="Asunto del mensaje"
-                    />
-                    {formErrors.subject && <p className="text-red-500 text-xs mt-1">{formErrors.subject[0]}</p>}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm text-gray-400">
-                      Mensaje
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={5}
-                      className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                        formErrors.message ? "border-red-500" : "border-gray-700"
-                      } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                      placeholder="Tu mensaje"
-                    ></textarea>
-                    {formErrors.message && <p className="text-red-500 text-xs mt-1">{formErrors.message[0]}</p>}
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Enviando...
-                      </>
-                    ) : (
-                      "Enviar Mensaje"
-                    )}
-                  </Button>
-                </form>
+                <ContactForm />
               </div>
 
               <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-800">
@@ -202,6 +81,14 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="text-center mt-8">
+              <Link href="/">
+                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600">
+                  Volver al inicio
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

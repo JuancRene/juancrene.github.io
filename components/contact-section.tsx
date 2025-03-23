@@ -4,41 +4,36 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
-import { Github, Linkedin, MessageSquare, Loader2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { sendContactForm } from "@/lib/actions"
+import { Github, Linkedin, MessageSquare } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+
+// Import the ContactForm component
+import ContactForm from "@/components/contact-form"
 
 export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formErrors, setFormErrors] = useState<Record<string, string[]>>({})
   const { showToast } = useToast()
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
     setIsSubmitting(true)
     setFormErrors({})
 
     try {
-      const result = await sendContactForm(formData)
+      const formData = new FormData(event.currentTarget)
 
-      if (result.success) {
-        showToast({
-          title: "Mensaje enviado",
-          description: result.message,
-          variant: "default",
-        })
-        // Limpiar el formulario
-        const form = document.getElementById("contact-form") as HTMLFormElement
-        form?.reset()
-      } else {
-        setFormErrors(result.errors || {})
-        showToast({
-          title: "Error",
-          description:
-            result.message || "Hubo un error al enviar el mensaje. Por favor, revisa los campos e intenta nuevamente.",
-          variant: "destructive",
-        })
-      }
+      // For static exports, we'll simulate the form submission
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      showToast({
+        title: "Mensaje enviado",
+        description: "Mensaje enviado correctamente. Te contactaré pronto.",
+        variant: "default",
+      })
+
+      // Reset the form
+      event.currentTarget.reset()
     } catch (error) {
       showToast({
         title: "Error",
@@ -60,88 +55,9 @@ export default function ContactSection() {
           </p>
         </div>
 
+        {/* Replace the form with our ContactForm component */}
         <div className="max-w-3xl mx-auto">
-          <form id="contact-form" action={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm text-gray-400">
-                Nombre
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                  formErrors.name ? "border-red-500" : "border-gray-700"
-                } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                placeholder="Tu nombre"
-              />
-              {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name[0]}</p>}
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm text-gray-400">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                  formErrors.email ? "border-red-500" : "border-gray-700"
-                } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                placeholder="Tu email"
-              />
-              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email[0]}</p>}
-            </div>
-
-            <div className="space-y-2 md:col-span-2">
-              <label htmlFor="subject" className="text-sm text-gray-400">
-                Asunto
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                  formErrors.subject ? "border-red-500" : "border-gray-700"
-                } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                placeholder="Asunto del mensaje"
-              />
-              {formErrors.subject && <p className="text-red-500 text-xs mt-1">{formErrors.subject[0]}</p>}
-            </div>
-
-            <div className="space-y-2 md:col-span-2">
-              <label htmlFor="message" className="text-sm text-gray-400">
-                Mensaje
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                className={`w-full px-4 py-3 rounded-lg bg-gray-800 border ${
-                  formErrors.message ? "border-red-500" : "border-gray-700"
-                } text-white focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500`}
-                placeholder="Tu mensaje"
-              ></textarea>
-              {formErrors.message && <p className="text-red-500 text-xs mt-1">{formErrors.message[0]}</p>}
-            </div>
-
-            <div className="md:col-span-2">
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Enviando...
-                  </>
-                ) : (
-                  "Enviar Mensaje"
-                )}
-              </Button>
-            </div>
-          </form>
+          <ContactForm />
 
           <div className="mt-12 flex justify-center space-x-6">
             <SocialLink icon={<Github className="h-5 w-5" />} label="GitHub" href="https://github.com/JuancRene" />

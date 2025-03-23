@@ -3,13 +3,18 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
+import EmailLink from "./email-link"
 
 export default function HeroSection() {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black z-10"></div>
-        <div className="absolute inset-0 bg-[url('/images/hero-background.png')] bg-cover bg-center opacity-50"></div>
+        {/* Use a div with background image for better static export compatibility */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: 'url("/images/hero-background.png")' }}
+        ></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,200,150,0.1),transparent_70%)]"></div>
       </div>
 
@@ -41,12 +46,9 @@ export default function HeroSection() {
             >
               Ver mis proyectos <ChevronRight className="ml-2 h-4 w-4" />
             </Link>
-            <Link
-              href="/contacto"
-              className="px-6 py-3 rounded-full border border-gray-700 text-white font-medium hover:border-emerald-500 transition-all"
-            >
+            <EmailLink buttonStyle className="px-6 py-3 rounded-full">
               Contáctame
-            </Link>
+            </EmailLink>
           </div>
         </motion.div>
       </div>

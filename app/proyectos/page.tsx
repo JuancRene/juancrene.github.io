@@ -2,9 +2,9 @@ import type React from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Github, ExternalLink, Bot, Globe, Database, Calendar } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import OptimizedImage from "@/components/optimized-image"
 
 export default function ProjectsPage() {
   return (
@@ -32,7 +32,7 @@ export default function ProjectsPage() {
                 githubLink="https://github.com/JuancRene/GestorDePedido"
                 liveLink="https://gestor-de-pedido-lapecosa.vercel.app"
                 icon={<Database size={24} />}
-                year="2024"
+                year="2025"
               />
 
               <ProjectCard
@@ -42,23 +42,23 @@ export default function ProjectsPage() {
                 tags={["TypeScript", "Node.js", "WhatsApp API", "GPT", "ChatPDF"]}
                 githubLink="https://github.com/JuancRene/Botsito"
                 icon={<Bot size={24} />}
-                year="2023-2024"
+                year="2024-2023"
               />
 
               <ProjectCard
                 title="Reserva de Canchas de Paddle"
                 description="Aplicación web full-stack para la reserva de canchas de paddle. Permite a los usuarios ver disponibilidad, realizar reservas y gestionar sus horarios de forma intuitiva."
-                image="/placeholder.svg?height=400&width=600"
+                image="/images/reserva-canchas.png"
                 tags={["Python", "React", "TypeScript", "CSS", "CRUD"]}
                 githubLink="https://github.com/JuancRene/TPcanchasPadle"
                 icon={<Calendar size={24} />}
-                year="2023"
+                year="2024"
               />
 
               <ProjectCard
                 title="Portfolio Web Personal"
                 description="Mi sitio web personal para mostrar mis habilidades y proyectos. Desarrollado con React y Tailwind CSS, presenta un diseño moderno y responsive."
-                image="/placeholder.svg?height=400&width=600"
+                image="/images/portfolio-web.png"
                 tags={["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"]}
                 githubLink="https://github.com/JuancRene"
                 liveLink="https://juancrene.github.io"
@@ -67,51 +67,12 @@ export default function ProjectsPage() {
               />
             </div>
 
-            <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-800">
-              <h2 className="text-2xl font-bold mb-6">Metodología de Trabajo</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
-                    <span className="text-xl font-bold">1</span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-3">Planificación</h3>
-                  <p className="text-gray-300">
-                    Análisis de requisitos, investigación y diseño de la arquitectura del proyecto.
-                  </p>
-                </div>
-
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
-                    <span className="text-xl font-bold">2</span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-3">Desarrollo</h3>
-                  <p className="text-gray-300">
-                    Implementación del código siguiendo buenas prácticas y patrones de diseño.
-                  </p>
-                </div>
-
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
-                    <span className="text-xl font-bold">3</span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-3">Pruebas y Despliegue</h3>
-                  <p className="text-gray-300">
-                    Testing exhaustivo y despliegue en entornos de producción con monitoreo continuo.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center">
-                <p className="text-gray-400 mb-4">
-                  ¿Tienes un proyecto en mente? ¡Trabajemos juntos para hacerlo realidad!
-                </p>
-                <Link href="/contacto">
-                  <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600">
-                    Contáctame
-                  </Button>
-                </Link>
-              </div>
+            <div className="text-center mt-8">
+              <Link href="/">
+                <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600">
+                  Volver al inicio
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -144,11 +105,12 @@ function ProjectCard({
   return (
     <div className="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-emerald-500/50 transition-all group">
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={image || "/placeholder.svg"}
+        <OptimizedImage
+          src={image}
           alt={title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
+          fallbackSrc="/placeholder.svg?height=400&width=600"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
         <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-black/70 flex items-center justify-center text-emerald-400">
