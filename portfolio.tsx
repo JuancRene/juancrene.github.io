@@ -14,9 +14,9 @@ import ExperienceSection from "@/components/experience-section"
 import ContactSection from "@/components/contact-section"
 
 // Import the animated background
-import WebGLBackground from "@/components/webgl-background"
+//import WebGLBackground from "@/components/webgl-background"
 // Uncomment one of these alternatives if you prefer a different style:
-// import AnimatedBackground from "@/components/animated-background"
+import AnimatedBackground from "@/components/animated-background"
 // import GradientBackground from "@/components/gradient-background"
 // import DigitalRainBackground from "@/components/digital-rain-background"
 
