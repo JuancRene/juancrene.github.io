@@ -151,10 +151,12 @@ function ProjectCard({
               target="_blank"
               className="flex items-center gap-1 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
             >
+              <ExternalLink size={16} />
+              Demo
+            </Link>
           )}
         </div>
       </div>
     </div>
   )
 }
-
